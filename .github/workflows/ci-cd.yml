@@ -1,0 +1,62 @@
+name: CI/CD ventas regalos
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    name: CI - pruebas, validación e informes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener archivos del commit
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar pruebas automatizadas
+        run: python -m pytest -v
+
+      - name: Validar referencia.csv y actual.csv
+        run: python scripts/validar.py datos/referencia.csv datos/actual.csv
+
+      - name: Generar informe de Evidently y portada
+        run: python scripts/generar_informe.py
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir artefacto del sitio
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  cd:
+    name: CD - publicar en GitHub Pages
+    needs: ci
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

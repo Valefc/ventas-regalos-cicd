@@ -1,0 +1,27 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Salida generada (la crea GitHub Actions)
+public/
+
+# Credenciales y secretos
+.env
+*.key
+*.pem
+secrets.*
+token*.txt
+
+# Archivos temporales y del sistema
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.ipynb_checkpoints/

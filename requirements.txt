@@ -1,0 +1,4 @@
+pandas>=2.0,<3
+numpy>=1.26,<2.1
+evidently==0.4.40
+pytest>=8,<9
