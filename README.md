@@ -10,7 +10,7 @@ el informe en GitHub Pages cuando todo es válido.
 ## Estructura
 
 ```
-datos/            referencia.csv (septiembre, fijo), control.csv (octubre), nuevo.csv (noviembre), actual.csv (lote a publicar)
+datos/            original/ (CSV de trabajo intacto), referencia.csv (septiembre, fijo), control.csv (octubre), nuevo.csv (noviembre), actual.csv (lote a publicar)
 scripts/          validar.py, generar_informe.py, preparar_lotes.py
 tests/            pruebas automatizadas (pytest)
 evidencias/       informes de Evidently de lotes ya publicados (p. ej. octubre)
@@ -33,7 +33,7 @@ python scripts/generar_informe.py                                # genera public
 Preparar los lotes desde el CSV de trabajo (conserva una copia intacta aparte):
 
 ```powershell
-python scripts/preparar_lotes.py ruta\ventas_regalos_2011.csv
+python scripts/preparar_lotes.py   # lee datos\original\ventas_regalos_2011.csv
 ```
 
 ## Cómo cambia `actual.csv`
