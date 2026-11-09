@@ -3,7 +3,7 @@
 Sistema que **valida** lotes de ventas, **compara** sus distribuciones con Evidently y **publica** automáticamente
 el informe en GitHub Pages cuando todo es válido.
 
-- Sitio publicado: https://TU_USUARIO.github.io/ventas-regalos-cicd/
+- Sitio publicado: https://valefc.github.io/ventas-regalos-cicd/
 - Autora: Valeria Figueroa Camacho
 - Fuente de datos: Chen, D. (2015). *Online Retail* [Dataset]. UCI Machine Learning Repository. https://archive.ics.uci.edu/dataset/352/online+retail
 
