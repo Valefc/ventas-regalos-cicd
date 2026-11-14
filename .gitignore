@@ -25,3 +25,6 @@ token*.txt
 Thumbs.db
 .vscode/
 .ipynb_checkpoints/
+
+prueba_drift.py
+prueba_drift/
